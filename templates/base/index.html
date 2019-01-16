@@ -1,0 +1,111 @@
+{#{% extends "base_generic.html" %}#}
+{##}
+{#{% block title %}<title>Home page</title>{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#<h1>Local Library Home</h1>#}
+{##}
+{#  <p>Welcome to <em>LocalLibrary</em>, a very basic Django website developed as a tutorial example on the Mozilla Developer Network.</p>#}
+{##}
+{#<h2>Dynamic content</h2>#}
+{##}
+{#  <p>The library has the following record counts:</p>#}
+{#  <ul>#}
+{#    <li><strong>Books:</strong> {{ num_books }}</li>#}
+{#    <li><strong>Genres:</strong> {{ num_genres }}</li>#}
+{#    <li><strong>Copies:</strong> {{ num_instances }}</li>#}
+{#    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>#}
+{#    <li><strong>Authors:</strong> {{ num_authors }}</li>#}
+{#  </ul>#}
+{##}
+{#<p>You have visited this page {{ num_visits }} {% if num_visits == 1 %} time {% else %} times{% endif %}.</p>#}
+{##}
+{#{% endblock %}#}
+
+
+{% extends "home_base.html" %}
+
+{% block title %}<title>Home page</title>{% endblock %}
+
+{% block content %}
+
+    <div class="container marketing col-lg-10">
+
+    <div class="jumbotron">
+        <div class="container">
+         <h1>Hello, world!</h1>
+         <p>Перед вами список 100 лучших книг, составленный по результатам голосования посетителей нашего сайта. В голосовании участвуют произведения художественной литературы любой длины, любого жанра, написанные на любом языке в любой период времени. Участники голосования сами решают, что понимать под словами «лучшие книги». Вы можете добавить в список и проголосовать как за самое эпохальное с вашей точки зрения литературное произведение, так и за просто интересную книгу, которую можете перечитывать раз за разом (подробнее в разделе «О проекте»). Система голосования позволяет голосовать как «за», так и «против». Онлайн голосование является бессрочным, результаты обновляются немедленно в режиме реального времени. Добро пожаловать в рейтинг 100 лучших книг всех времен! Читайте и любите книги!</p>
+         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+        </div>
+        </div>
+
+       <hr class="featurette-divider">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+             <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+            </div>
+
+{% endblock %}
