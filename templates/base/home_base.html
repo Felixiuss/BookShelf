@@ -38,7 +38,7 @@
                 <li><a href="#">One more separated link</a></li>
               </ul>
                 <li><a href="#contact">Войти</a></li>
-              {% if user.is_authenticated %}<li></li>{% else %}<li><a href="{% url 'user_create' %}">Зарегистрироватся</a></li>{% endif %}
+              {% if user.is_authenticated %}<li></li>{% else %}<li><a href="#">Зарегистрироватся</a></li>{% endif %}
 {#            </li>#}
               <form class="navbar-form navbar-left">
                   <div class="form-group">
@@ -60,47 +60,47 @@
       <a href="#" class="list-group-item active text-center">
         Карта сайта
       </a>
-      <a href="{% url 'authors' %}" class="list-group-item">Авторы</a>
-      <a href="{% url 'books' %}" class="list-group-item">Книги</a>
-      <a href="{% url 'blogs' %}" class="list-group-item">Лента</a>
+      <a href="#" class="list-group-item">Авторы</a>
+      <a href="#" class="list-group-item">Книги</a>
+      <a href="#" class="list-group-item">Лента</a>
       <a href="#" class="list-group-item">100 лучших книг</a>
       <a href="#" class="list-group-item">Проголосовать</a>
       <a href="#" class="list-group-item">Подборки книг</a>
     </div>
 
-    <hr class="featurette-divider">
-
-        <div class="list-group">
-            {% if user.is_authenticated %}
-      <a href="#" class="list-group-item active text-center">Здраствуйте</a>
-      <a href="#" class="list-group-item">{{ user.get_username }}</a>
-      <a href="{% url 'my-borrowed' %}" class="list-group-item">My borrowed</a>
-      <a href={% url 'logout'%}?next={{request.path}} class="list-group-item">Выйти</a>
-            {% else %}
-                <a href="#" class="list-group-item active text-center">Здраствуйте гость</a>
-                <a href="{% url 'login'%}?next={{request.path}}" class="list-group-item">Войти</a>
-            {% endif %}
-        </div>
-
-     <div class="list-group">
-            {% if user.is_staff%}
-      <a href="#" class="list-group-item active text-center">Staff</a>
-            {% if perms.catalog.can_mark_returned %}
-      <a href="{% url 'all-borrowed' %}" class="list-group-item">Список заемщиков</a>
-      <a href="{% url 'author_create' %}" class="list-group-item">Добавить автора</a>
-      <a href="{% url 'book_create' %}" class="list-group-item">Добавить книгу</a>
-            {% endif %}
-            {% endif %}
-        </div>
-
-
-    <div class="list-group">
-          {% if user.is_superuser %}
-              <hr>
-             <a href="#" class="list-group-item active text-center">Admin</a>
-              <a href="http://127.0.0.1:8000/admin/" class="list-group-item">Панель администратора</a>
-          {% endif %}
-     </div>
+{#    <hr class="featurette-divider">#}
+{##}
+{#        <div class="list-group">#}
+{#            {% if user.is_authenticated %}#}
+{#      <a href="#" class="list-group-item active text-center">Здраствуйте</a>#}
+{#      <a href="#" class="list-group-item">{{ user.get_username }}</a>#}
+{#      <a href="{% url 'my-borrowed' %}" class="list-group-item">My borrowed</a>#}
+{#      <a href={% url 'logout'%}?next={{request.path}} class="list-group-item">Выйти</a>#}
+{#            {% else %}#}
+{#                <a href="#" class="list-group-item active text-center">Здраствуйте гость</a>#}
+{#                <a href="{% url 'login'%}?next={{request.path}}" class="list-group-item">Войти</a>#}
+{#            {% endif %}#}
+{#        </div>#}
+{##}
+{#     <div class="list-group">#}
+{#            {% if user.is_staff%}#}
+{#      <a href="#" class="list-group-item active text-center">Staff</a>#}
+{#            {% if perms.catalog.can_mark_returned %}#}
+{#      <a href="{% url 'all-borrowed' %}" class="list-group-item">Список заемщиков</a>#}
+{#      <a href="{% url 'author_create' %}" class="list-group-item">Добавить автора</a>#}
+{#      <a href="{% url 'book_create' %}" class="list-group-item">Добавить книгу</a>#}
+{#            {% endif %}#}
+{#            {% endif %}#}
+{#        </div>#}
+{##}
+{##}
+{#    <div class="list-group">#}
+{#          {% if user.is_superuser %}#}
+{#              <hr>#}
+{#             <a href="#" class="list-group-item active text-center">Admin</a>#}
+{#              <a href="http://127.0.0.1:8000/admin/" class="list-group-item">Панель администратора</a>#}
+{#          {% endif %}#}
+{#     </div>#}
     </div>
 
        {% block content %}{% endblock %}
@@ -108,7 +108,7 @@
 
       {% block pagination %}  <!-- Блок для пагинатора -->
         {% if is_paginated %}
-            <div class="col-sm-offset-5"
+            <div class="col-sm-offset-5">
         <nav aria-label="Page navigation">
           <ul class="pagination">
             <li>
