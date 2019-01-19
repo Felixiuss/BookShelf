@@ -1,0 +1,37 @@
+{% extends 'base/home_base.html' %}
+
+{% block title %}
+    {{ post.title }} - {{ block.super }}  {# наследование родительского поведения #}
+{% endblock %}
+
+{% block content %}
+    <p>{{ post.author }} - {{ post.date_pub }}  {# todo add tags #}</p>
+     <h1 class="mt-5">
+        {{ post.title }}
+     </h1>
+    <p>
+        {{ post.body }}
+    </p>
+
+    {#    Comments block#}
+    <div style="margin-left:20px;margin-top:20px">
+    <h4>Comments</h4>
+
+    {% for comment in post.postcomment_set.all %}
+        <hr>
+        <p>{{comment.author}} - {{comment.post_date}}</p>  {# TODO - add link to author #}
+        <p>{{comment.comment}}</p>
+    {% endfor %}
+
+    <hr>
+    {% if user.is_authenticated %}
+        <a href="{% url 'post_comment' post.id %}">Add a new comment</a></p>
+    {% else %}
+        <p><a href="{% url 'login'%}?next={{request.path}}">Login</a> to add a new comment</p>
+    {% endif %}
+
+    <p><a href="{% url 'post_update' slug=post.slug %}"><button class="btn btn-default">Изменить статью</button></a></p>
+    <p><a href="{% url 'post_delete' slug=post.slug %}"><button class="btn btn-default">Удалить статью</button></a></p>
+    </div>
+
+{% endblock %}
