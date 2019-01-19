@@ -15,7 +15,7 @@ from django.shortcuts import get_object_or_404
 
 
 # def posts_list(request):
-#     """представление для просмотра списка всех постов"""
+#     """представление для просмотра списка всех постов с пагинатором"""
 #
 #     search_query = request.GET.get('search', '')  # проверяет по ключу search - ввел ли пользователь в поисковике слово
 #
@@ -110,8 +110,10 @@ class PostCommentCreate(LoginRequiredMixin, CreateView):
         """Get the name of a slug field to be used to look up by slug."""
         return self.slug_field
 
-    def get_success_url(self):     # todo сделать реверс на комментируемый блог
+    def get_success_url(self):
         """
         After posting comment return to associated blog.
         """
-        return reverse('articles', )
+        post = Post.objects.get(pk=self.kwargs['pk'])
+        print(post.slug)
+        return reverse('post_detail', kwargs={'slug': post.slug, })

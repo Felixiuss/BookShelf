@@ -18,6 +18,7 @@ urlpatterns = [
     path('post/<str:slug>/update/', views.PostUpdate.as_view(), name='post_update'),
     path('post/<str:slug>/delete/', views.PostDelete.as_view(), name='post_delete'),
     path('post/<int:pk>/comment/', views.PostCommentCreate.as_view(), name='post_comment'),
+    path('post/<int:pk>/', views.PostDetailView.as_view(), name='post-detail'),
 
     #     path('post/<str:slug>/delete/', PostDelete.as_view(), name='post_delete_url'),
 #     path('tags/', tags_list, name='tags_list_url'),
