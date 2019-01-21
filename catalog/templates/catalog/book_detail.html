@@ -1,0 +1,28 @@
+{% extends "base/home_base.html" %}
+
+{% block content %}
+
+    <div class="panel panel-primary col-sm-offset-2 " style="margin-right:30px;">
+           <!-- Содержание панели по умолчанию -->
+        <div class="panel-heading"><h1>{{ book.title }}</h1></div>
+            <!-- Группы списков -->
+            <ul class="list-group">
+              {% if user.is_staff %}
+                  <li class="list-group-item"><a href="{% url 'book_update' book.id %}"><button class="btn btn-default">Изменить книгу</button></a>
+                                              <a href="{% url 'book_delete' book.id %}"><button class="btn btn-default">Удалить книгу</button></a></li>
+              {% endif %}
+                 <li class="list-group-item">
+                  <p><strong>Author:</strong> <a href="{% url 'author-detail' book.author.pk %}">{{ book.author }}</a></p>
+                  <p><strong>Категория:</strong> {% for category in book.category.all %} {{ category }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                  <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+                  <p><strong>Язык:</strong> {{ book.language }}</p>
+                  <p><strong>Год издания:</strong> {{ book.pub_year }}</p>
+                  <p><strong>Издатель:</strong> {{ book.publisher }}</p>
+                  <p><strong>Количество страниц:</strong> {{ book.num_page }}</p>
+                  <p><strong>Переплет:</strong> {{ book.binding }}</p>
+                  <p><strong>Описание:</strong> {{ book.description }}</p>
+                 </li>
+            </ul>
+    </div>
+
+{% endblock %}

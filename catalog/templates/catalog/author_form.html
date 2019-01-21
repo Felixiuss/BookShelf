@@ -1,0 +1,18 @@
+{% extends "base/home_base.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+    <div class="col-md-5 col-md-offset-2">
+      <h3 class="text-center">Редактирование</h3>
+      <hr>
+      <form action="" method="post">
+        {% csrf_token %}
+        <table>
+          {{ form|crispy }}
+        </table>
+        <input type="submit" class="btn btn-success" value="Submit" />
+      </form>
+    </div>
+
+{% endblock %}

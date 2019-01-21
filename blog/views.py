@@ -12,46 +12,40 @@ from django.urls import reverse
 from django.shortcuts import get_object_or_404
 
 
+def posts_list(request):
+    """представление для просмотра списка всех постов с пагинатором"""
 
+    search_query = request.GET.get('search', '')  # проверяет по ключу search - ввел ли пользователь в поисковике слово
 
-# def posts_list(request):
-#     """представление для просмотра списка всех постов с пагинатором"""
-#
-#     search_query = request.GET.get('search', '')  # проверяет по ключу search - ввел ли пользователь в поисковике слово
-#
-#     if search_query:  # если ввел
-#         posts = Post.objects.filter(Q(title__icontains=search_query) | Q(body__icontains=search_query))  # возвращаем совпадение
-#     else:
-#         posts = Post.objects.all()  # иначе передаем дальше список постов
-#
-#     # пагинация
-#     paginator = Paginator(posts, 2)
-#     page_number = request.GET.get('page', 1)
-#     page = paginator.get_page(page_number)
-#     is_paginated = page.has_other_pages()
-#
-#     if page.has_previous():
-#         prev_url = '?page={}'.format(page.previous_page_number())
-#     else:
-#         prev_url = ''
-#
-#     if page.has_next():
-#         next_url = '?page={}'.format(page.next_page_number())
-#     else:
-#         next_url = ''
-#
-#     context = {
-#         'page_object': page,
-#         'is_paginated': is_paginated,
-#         'next_url': next_url,
-#         'prev_url': prev_url
-#     }
-#
-#     return render(request, 'blog/index.html', context=context)
+    if search_query:  # если ввел
+        posts = Post.objects.filter(Q(title__icontains=search_query) | Q(body__icontains=search_query))  # возвращаем совпадение
+    else:
+        posts = Post.objects.all()  # иначе передаем дальше список постов
 
-class PostListView(generic.ListView):
-    model = Post
-    paginate_by = 10
+    # пагинация
+    paginator = Paginator(posts, 2)
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
+    is_paginated = page.has_other_pages()
+
+    if page.has_previous():
+        prev_url = '?page={}'.format(page.previous_page_number())
+    else:
+        prev_url = ''
+
+    if page.has_next():
+        next_url = '?page={}'.format(page.next_page_number())
+    else:
+        next_url = ''
+
+    context = {
+        'page_object': page,
+        'is_paginated': is_paginated,
+        'next_url': next_url,
+        'prev_url': prev_url,
+    }
+
+    return render(request, 'blog/post_list.html', context=context)
 
 
 class PostDetailView(generic.DetailView):
@@ -88,9 +82,9 @@ class PostCommentCreate(LoginRequiredMixin, CreateView):
         """
         Добавляет связанный блог в шаблон формы, чтобы его заголовок отображался в HTML.
         """
-        # Call the base implementation first to get a context
+        # Сначала вызываем базовую реализацию, чтобы получить контекст
         context = super(PostCommentCreate, self).get_context_data(**kwargs)
-        # Get the blog from id and add it to the context
+        # Получить блог по id и добавить его в contex
         context['post'] = get_object_or_404(Post, pk=self.kwargs['pk'])
         return context
 

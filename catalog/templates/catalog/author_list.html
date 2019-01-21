@@ -1,0 +1,40 @@
+{% extends "base/home_base.html" %}
+
+
+{% block content %}
+
+{% if author_list %}
+      <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+        <h1 class="text-center">Список авторов</h1>
+      </div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>автор</th>
+                <th>год рождения</th>
+                <th>год смерти</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for author in author_list %}
+              <tr>
+                <td><a href="{{ author.get_absolute_url }}">{{ author }}</a></td>
+                <td>{{author.date_of_birth}}</td>
+            {% if author.date_of_death %}
+                <td>{{author.date_of_death}}</td>
+            {% else %}
+                <td>----------------------</td>
+            {% endif %}
+               </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+{% else %}
+      <p>Авторы отсутствуют.</p>
+{% endif %}
+
+{% endblock %}
